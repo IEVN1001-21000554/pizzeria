@@ -1,0 +1,26 @@
+<div class="ml-4 mr-12 h-full p-6 rounded-2xl shadow-yellow-600 shadow-lg border-4 border-yellow-300 bg-gray-200">
+  <div class="ml-4 mr-12 h-full p-6 rounded-2xl shadow-yellow-600 shadow-lg border-4 border-yellow-300 bg-gray-200">
+    <div>
+      <h2></h2>
+      <!-- <label for="fecha">Fecha (YYYY-MM-DD): </label> -->
+      <input type="date" id="fecha" [(ngModel)]="fecha" />
+    
+      <button class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 mt-4" (click)="buscarVentas()">Consultar</button>
+    
+      <div *ngIf="error" class="error">
+        <p>{{ error }}</p>
+      </div>
+    
+      <div *ngIf="ventas.length > 0">
+        <h3>Ventas para la fecha {{ fecha }}:</h3>
+        <ul>
+          <li *ngFor="let venta of ventas">
+            <p>ID: {{ venta.nombre }} | Total: {{ venta.total }} | Fecha: {{ venta.fecha }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  
+</div>

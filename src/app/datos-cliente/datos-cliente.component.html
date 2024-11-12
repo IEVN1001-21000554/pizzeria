@@ -1,0 +1,76 @@
+
+
+
+<div class="mx-12 p-6 rounded-2xl shadow-red-700 shadow-lg border-4 border-red-600 bg-gray-200">
+      
+      
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  
+      <div class="grid grid-cols-3 grid-rows-2 gap-4">
+        
+        <div >
+          <div class="mb-4">
+            <label for="nombre" class="block text-gray-800">Nombre:</label>
+            <input id="nombre" formControlName="nombre" type="text" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+        </div>
+        <div >
+          <div class="mb-4">
+            <label for="direccion" class="block text-gray-800">Dirección:</label>
+            <input id="direccion" formControlName="direccion" type="text" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+        </div>
+        <div >
+          <div class="mb-4">
+            <label for="telefono" class="block text-gray-800">Teléfono:</label>
+            <input id="telefono" formControlName="telefono" type="text" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+
+          <div class="mb-4">
+            <label for="fecha" class="block text-gray-800">Fecha de Compra:</label>
+            <input id="fecha" formControlName="fecha" type="date" class="w-full px-3 py-2 border rounded-lg " />
+          </div>
+        </div>
+        <div>
+          <label class="block text-gray-800 mb-4">Tamaño:</label>
+          <div class="flex items-center mb-4">
+            <input type="radio" formControlName="tamano" value="Pequeño" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300">
+            <label class="ms-2 text-sm font-medium">Pequeño $40</label>
+          </div>
+          <div class="flex items-center mb-4">
+            <input type="radio" formControlName="tamano" value="Mediano" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300">
+            <label class="ms-2 text-sm font-medium">Mediano $80</label>
+          </div>
+          <div class="flex items-center mb-4">
+            <input type="radio" formControlName="tamano" value="Grande" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300">
+            <label class="ms-2 text-sm font-medium">Grande $120</label>
+          </div>
+        </div>
+        <div>
+          <label class="block text-gray-800">Ingredientes:</label>
+          <div class="flex items-center mb-4">
+            <input type="checkbox" (change)="onCheckboxChange($event)" value="Jamon" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+            <label class="ms-2 text-sm font-medium">Jamon $10</label>
+          </div>
+          <div class="flex items-center mb-4">
+            <input type="checkbox" (change)="onCheckboxChange($event)" value="Pina" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+            <label class="ms-2 text-sm font-medium">Piña $10</label>
+          </div>
+          <div class="flex items-center mb-4">
+            <input type="checkbox" (change)="onCheckboxChange($event)" value="Champiñones" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+            <label class="ms-2 text-sm font-medium">Champiñones $15</label>
+          </div>
+        </div>        
+        <div >
+          <div class="mb-4">
+            <label for="quantity" class="block text-gray-800">Número de Pizzas:</label>
+            <input id="quantity" formControlName="cantidad" type="number" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">Agregar</button>
+        </div>
+        
+      </div>  
+  
+    </form>
+  
+  </div>

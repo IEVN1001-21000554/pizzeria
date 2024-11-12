@@ -1,0 +1,47 @@
+<div class="ml-4 mr-12 h-full p-6 rounded-2xl shadow-blue-700 shadow-lg border-4 border-blue-600 bg-gray-200">
+  <button (click)="mostrarOrdenes()" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 mb-4">Mostrar Ordenes</button>
+
+  <table *ngIf="ordenes.length > 0" class="w-full border-collapse table-auto">
+    <thead class="bg-gray-300">
+      <tr>
+        <th class="border-b-4 border-r-4 border-gray-600 px-4 py-2 text-center"></th>
+        <th class="border-b-4 border-r-4 border-gray-600 px-4 py-2 text-center">Tamaño</th>
+        <th class="border-b-4 border-r-4 border-gray-600 px-4 py-2 text-center">Ingredientes</th>
+        <th class="border-b-4 border-r-4 border-gray-600 px-4 py-2 text-center">Número de Pizzas</th>
+        <th class="border-b-4 border-r-4 border-gray-600 px-4 py-2 text-center">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let orden of ordenes; let i = index" class="border-b border-gray-300">
+        <td class="border-r-4 border-gray-600 px-4 py-2 text-center">
+          <input type="checkbox" (change)="seleccionarOrden(i)" [checked]="selectedOrders.has(i)">
+        </td>
+        <td class="border-r-4 border-gray-600 px-4 py-2 text-center">{{ orden.tamano }}</td>
+        <td class="border-r-4 border-gray-600 px-4 py-2 text-center">
+          <ul class="list-none">
+            <li *ngFor="let ingrediente of orden.ingredientes" class="text-center">{{ ingrediente }}</li>
+          </ul>
+        </td>
+        <td class="border-r-4 border-gray-600 px-4 py-2 text-center">{{ orden.cantidad }}</td>
+        <td class="border-r-4 border-gray-600 px-4 py-2 text-center">{{ calcularSubtotal(orden) | currency }}</td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="ordenes.length > 0">
+      <tr class="bg-gray-200">
+        <td colspan="4" class="text-right px-4 py-2 font-semibold border-t-4 border-gray-600"><strong>Total:</strong></td>
+        <td class="px-4 py-2 font-semibold border-t-4 border-gray-600 text-center">{{ totalPrice | currency }}</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <button (click)="eliminarOrdenes()" class="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 mt-4">Eliminar Ordenes Seleccionadas</button>
+
+  <button (click)="mostrarConfirmacion()" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 mt-4" [disabled]="ordenes.length === 0">
+    Terminar
+  </button>
+
+  <div *ngIf="showConfirmation" class="mt-4 p-4 bg-gray-100 rounded-xl">
+    <p class="text-center">¿Seguro que quieres pedir esto?</p>
+    <button (click)="confirmarPedido()" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 mt-4">Confirmar</button>
+  </div>
+</div>
